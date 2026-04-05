@@ -11,7 +11,7 @@ export const projects = [
     description: "Une application fullstack avec React, Node.js, Express et PostgreSQL pour gerer les salaires des enseignants.",
     tech: ["React", "Node.js", "Express", "PostgreSQL", "Tailwind CSS"],
     image: project1Img,
-    demoLink: "https://ens-frontend-six.vercel.app/",
+    demoLink: "https://enseignant-gestion.vercel.app/",
     githubLink: "https://github.com/Elinoh001/ens",
     featured: true,
   },
