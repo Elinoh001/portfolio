@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
 import {
   Mail,
   Phone,
@@ -46,17 +47,33 @@ const Contact = () => {
   };
 
   // Soumission du formulaire
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+
     if (!validate()) return;
 
-    // Simulation d'envoi (remplacer par un appel API réel)
-    setIsSent(true);
-    // Réinitialiser après 3 secondes
-    setTimeout(() => {
-      setFormData({ name: "", email: "", message: "" });
-      setIsSent(false);
-    }, 3000);
+    emailjs
+      .send(
+        "service_qjycfzq",      // remplace
+        "template_l7er7ho",     // remplace
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+        "RTc2Ho20bq-Cn46mt"       // remplace
+      )
+      .then(() => {
+        setIsSent(true);
+
+        setTimeout(() => {
+          setFormData({ name: "", email: "", message: "" });
+          setIsSent(false);
+        }, 3000);
+      })
+      .catch((error) => {
+        console.error("Erreur EmailJS:", error);
+      });
   };
 
   return (
